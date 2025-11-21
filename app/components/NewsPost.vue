@@ -8,7 +8,7 @@ defineProps<{
 
 <template>
   <article class="bg-card-light dark:bg-card-dark rounded-lg shadow-sm text-right">
-    <img :src="cover" alt="" class="aspect-video w-full rounded-t-lg object-cover">
+    <img :src="useAsset(cover)" alt="" class="aspect-video w-full rounded-t-lg object-cover">
 
     <div class="p-6 ">
       <h3 class="text-xl font-bold">{{ title }}</h3>
