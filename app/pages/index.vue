@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { data } = await useAsyncData(() => queryCollection('weeklyLetter').first())
+const { data } = await useAsyncData(() => queryCollection('weeklyLetter').order('date', 'DESC').first())
 
 </script>
 
