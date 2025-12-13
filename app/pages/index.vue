@@ -13,13 +13,10 @@ const { data } = await useAsyncData(() => queryCollection('weeklyLetter').order(
     </p>
     <LazyClientOnly>
       <div class="space-y-6">
-        <NuxtLink :to="{ name: 'news-slug', params: { slug: data.stem } }"
-        >
-          <WeeklyLetterCarousel
+        <WeeklyLetterCarousel
               :images="data.images"
               :date="data.date">
           </WeeklyLetterCarousel>
-        </NuxtLink>
       </div>
     </LazyClientOnly>
 

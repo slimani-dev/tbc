@@ -1,6 +1,6 @@
 <script setup>
 
-const { data } = await useAsyncData(() => queryCollection('weeklyLetter').first())
+const { data } = await useAsyncData(() => queryCollection('weeklyLetter').all())
 
 console.log(data.value)
 </script>
@@ -8,28 +8,19 @@ console.log(data.value)
 
 <template>
   <div class="animate-fade-in">
-    <h2 class="text-2xl font-bold mb-2 text-primary-DEFAULT text-center">
-      الرسالة الاسبوعية
-    </h2>
-    <p class="text-center mb-6">
-      مع إشراقة كل أسبوع، ستجدون رسالتَنا الأسبوعية نبراسًا يوجِّه العمل، ويبعث في الميدان روحًا من التفاؤل
-    </p>
+    <h2 class="text-2xl font-bold mb-2 text-primary-DEFAULT text-center">الرسالة الاسبوعية</h2>
+    <p
+      class="text-center mb-6"
+    >مع إشراقة كل أسبوع، ستجدون رسالتَنا الأسبوعية نبراسًا يوجِّه العمل، ويبعث في الميدان روحًا من التفاؤل</p>
     <LazyClientOnly>
-      <div class="space-y-6">
-        <NuxtLink :to="{ name: 'news-slug', params: { slug: data.stem } }"
-        >
-          <WeeklyLetterCarousel
-                    :images="data.images"
-                    :date="data.date">
-          </WeeklyLetterCarousel>
-        </NuxtLink>
+      <div class="flex flex-col gap-8">
+        <WeeklyLetterCarousel
+          v-for="post in data"
+          :key="post.id"
+          :images="post.images"
+          :date="post.date"
+        ></WeeklyLetterCarousel>
       </div>
     </LazyClientOnly>
-
-    <div class="flex flex-wrap items-center justify-center mt-6 text-muted underline">
-      <NuxtLink to="/activities" class="nav-button" active-class="nav-button-active">
-        رسائل الاسابيع الماضية
-      </NuxtLink>
-    </div>
   </div>
 </template>

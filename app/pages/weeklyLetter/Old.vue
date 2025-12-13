@@ -15,7 +15,7 @@ console.log(data.value)
       مع إشراقة كل أسبوع، ستجدون رسالتَنا الأسبوعية نبراسًا يوجِّه العمل، ويبعث في الميدان روحًا من التفاؤل
     </p>
     <LazyClientOnly>
-      <div class="space-y-6">
+      <div class="flex flex-col gap-4">
         <NuxtLink v-for="post in data"
                   :key="post.id"
                   :to="{ name: 'news-slug', params: { slug: post.stem } }"
