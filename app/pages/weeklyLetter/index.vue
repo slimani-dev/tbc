@@ -1,6 +1,6 @@
 <script setup>
 
-const { data } = await useAsyncData(() => queryCollection('weeklyLetter').all())
+const { data } = await useAsyncData(() => queryCollection('weeklyLetter').order('date', 'DESC').all())
 
 console.log(data.value)
 </script>
